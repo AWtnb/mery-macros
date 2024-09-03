@@ -1,3 +1,7 @@
 # [Mery](https://www.haijin-boys.com/wiki/) customize
 
-- Place (or make junction of) [`Macros`](Macros) to `%LOCALAPPDATA%\Programs\Mery` .
+## Install
+
+```PowerShell
+New-Item -Path ($env:LOCALAPPDATA | Join-Path -ChildPath "Programs\Mery\Macros") -Value ($pwd.Path | Join-Path -ChildPath "Macros") -ItemType Junction
+```
