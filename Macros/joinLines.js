@@ -7,8 +7,11 @@ function main() {
     return;
   }
   if (document.selection.isEmpty || document.selection.text.indexOf("\n") == -1) {
-    return;
+    document.selection.EndOfLine(false, mePosLogical);
+    document.selection.Delete();
+  } else {
+    document.selection.text = document.selection.text.replace(/(\r?\n)+/g, "");
   }
-  document.selection.text = document.selection.text.replace(/(\r?\n)+/g, "");
 }
+
 main();
