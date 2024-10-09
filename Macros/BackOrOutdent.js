@@ -17,7 +17,7 @@ function outdent() {
   const cursorY = slct.GetActivePointY(mePosLogical);
   const line = document.GetLine(cursorY, 1);
 
-  if (!slct.IsEmpty || slct.Mode != meModeStream) {
+  if (cursorX == 1 || !slct.IsEmpty || slct.Mode != meModeStream) {
     slct.DeleteLeft(1);
     return;
   }
