@@ -25,8 +25,11 @@ function main() {
   const lines = t.split("\n");
   const stack = [];
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i];
-    stack.push(symbol + line);
+    let line = lines[i];
+    if (0 < line.trim().length) {
+      line = symbol + line;
+    }
+    stack.push(line);
   }
   document.selection.text = stack.join("\n");
 }
