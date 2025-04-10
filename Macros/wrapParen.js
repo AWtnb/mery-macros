@@ -6,7 +6,7 @@ function main () {
   if (document.Selection.Mode != meModeStream) {
     return;
   }
-  document.Selection.Text = "（" + document.Selection.Text + "）"
+  document.Selection.Text = ("（" + document.Selection.Text + "）").replace("。）", "）")
   document.Selection.CharLeft(false, 1);
 }
 
