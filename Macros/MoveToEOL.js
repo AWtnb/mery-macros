@@ -5,13 +5,14 @@
 
 const selecting = false;
 
-function main () {
+function main() {
   const viewY = document.selection.GetActivePointY(mePosView);
   const viewX = document.selection.GetActivePointX(mePosView);
-  const viewLine = document.getLine(viewY);
-  const opt = (viewX == viewLine.length+1)? mePosLogical : mePosView;
-
-  document.selection.EndOfLine(selecting, opt);
+  if (viewX == document.getLine(viewY, meGetLineView).length + 1) {
+    document.selection.EndOfLine(selecting, mePosLogical);
+    return;
+  }
+  document.selection.EndOfLine(selecting, mePosView);
 }
 
 main();
