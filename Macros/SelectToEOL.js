@@ -8,11 +8,11 @@ const selecting = true;
 function main() {
   const viewY = document.selection.GetActivePointY(mePosView);
   const viewX = document.selection.GetActivePointX(mePosView);
+  let flag = mePosView;
   if (viewX == document.getLine(viewY, meGetLineView).length + 1) {
-    document.selection.EndOfLine(selecting, mePosLogical);
-    return;
+    flag = mePosLogical;
   }
-  document.selection.EndOfLine(selecting, mePosView);
+  document.selection.EndOfLine(selecting, flag);
 }
 
 main();
