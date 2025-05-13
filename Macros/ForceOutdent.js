@@ -16,7 +16,7 @@ function main() {
   const activeY = sel.GetActivePointY(mePosLogical);
 
   const lineBefore = getLogicalLine(activeY);
-  if (lineBefore.length < 1 || lineBefore.replace(/\s+/, "") == lineBefore) {
+  if (lineBefore.length < 1 || lineBefore.replace(/^\s+/, "") == lineBefore) {
     return;
   }
 
