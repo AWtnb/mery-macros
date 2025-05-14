@@ -20,10 +20,10 @@ function main() {
   }
 
   const menuArr = [
-    ["Gemini", "つなげ方", "https://gemini.google.com/app", "「{}」の先のうまい言い回しが思いつきません"],
-    ["ChatGPT", "つなげ方", "https://chat.openai.com/chat", "「{}」の先のうまい言い回しが思いつきません"],
     ["Gemini", "言い換え", "https://gemini.google.com/app", "「{}」の言い換え案を考えてください"],
     ["ChatGPT", "言い換え", "https://chat.openai.com/chat", "「{}」の言い換え案を考えてください"],
+    ["Gemini", "つなげ方", "https://gemini.google.com/app", "「{}」の先のうまい言い回しが思いつきません"],
+    ["ChatGPT", "つなげ方", "https://chat.openai.com/chat", "「{}」の先のうまい言い回しが思いつきません"],
     ["Gemini", "メール文面", "https://gemini.google.com/app", "以下の内容を伝えるビジネスメールの文面を書いてください。\n------\n{}"],
     ["ChatGPT", "メール文面", "https://chat.openai.com/chat", "以下の内容を伝えるビジネスメールの文面を書いてください。\n------\n{}"],
   ];
@@ -41,7 +41,10 @@ function main() {
 
   const selected = menuArr[idx - 1];
 
-  const t = toList(document.selection.Text);
+  let t = document.selection.Text;
+  if (t.indexOf("\n") != -1) {
+    t = toList(t);
+  }
   ClipboardData.SetData(selected[3].replace("{}", t));
 
   const shell = new ActiveXObject("WScript.Shell");
