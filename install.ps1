@@ -1,0 +1,1 @@
+New-Item -Path ($env:LOCALAPPDATA | Join-Path -ChildPath "Programs\Mery\Macros") -Value ($PSScriptRoot | Join-Path -ChildPath "Macros") -ItemType Junction -Confirm

@@ -2,9 +2,7 @@
 
 ## Install
 
-```PowerShell
-New-Item -Path ($env:LOCALAPPDATA | Join-Path -ChildPath "Programs\Mery\Macros") -Value ($pwd.Path | Join-Path -ChildPath "Macros") -ItemType Junction
-```
+Run [`install.ps1`](./install.ps1) to create junction of `Macro` to `Mery` directory in LocalAppData.
 
 ---
 
