@@ -7,15 +7,20 @@ function main() {
   if (document.selection.Mode != meModeStream) {
     return;
   }
-  if (document.selection.isEmpty) {
+
+  const sel = document.selection;
+
+  if (sel.isEmpty) {
+    const x = sel.GetActivePointX(mePosLogical);
+    const y = sel.GetActivePointY(mePosLogical);
+    document.selection.SetActivePoint(mePosLogical, 1, y, false);
     document.selection.text = symbol;
+    document.selection.SetActivePoint(mePosLogical, x + 2, y, false);
     return;
   }
 
-  const sel = document.selection;
   const ty = sel.GetTopPointY(mePosLogical);
   const by = sel.GetBottomPointY(mePosLogical);
-
   document.selection.SetActivePoint(mePosLogical, 1, ty, false);
   document.selection.SetActivePoint(mePosLogical, 1, by, true);
   document.selection.EndOfLine(true);
