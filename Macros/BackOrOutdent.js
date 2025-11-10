@@ -23,7 +23,7 @@ function outdent() {
   }
 
   const lastChar = line.slice(cursorX - 2, cursorX - 1);
-  if ("ゃゅょ".indexOf(lastChar) != -1 || (line.slice(cursorX - 3, cursorX - 2) == "ふ" && "ぁぃぅぇぉ".indexOf(lastChar) != -1)) {
+  if ("ゃゅょ".indexOf(lastChar) != -1 || ("ふう".indexOf(line.slice(cursorX - 3, cursorX - 2)) != -1 && "ぁぃぅぇぉ".indexOf(lastChar) != -1)) {
     slct.DeleteLeft(2);
     return;
   }
