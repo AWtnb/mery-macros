@@ -19,17 +19,17 @@ function main() {
   }
   let cursorY = document.selection.GetActivePointY(mePosLogical);
   const currentLine = getLogicalLine(cursorY);
-  const trimmed = currentLine.replace(/^ +/, "");
+  const nonIndent = currentLine.replace(/^ +/, "");
   let symbol = "";
-  if (["+", "*", "-", ">"].indexOf(trimmed.charAt(0)) != -1 && trimmed.charAt(1) == " ") {
-    if (trimmed.length == 2) {
+  if (["+ ", "* ", "- ", "> "].indexOf(nonIndent.slice(0, 2)) != -1) {
+    if (nonIndent.length == 2 && nonIndent != "> ") {
       document.selection.CharLeft(true, 2);
       document.selection.Delete();
       return;
     }
-    symbol = trimmed[0] + " ";
+    symbol = nonIndent[0] + " ";
   }
-  else if (trimmed.indexOf("1. ") == 0) {
+  else if (nonIndent.indexOf("1. ") == 0) {
     symbol = "1. "
   }
   document.selection.NewLine();
