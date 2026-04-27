@@ -5,7 +5,7 @@ function main() {
   const path = document.fullname;
   if (fso.FileExists(smoothCSV)) {
     wshShell.Run('"' + smoothCSV + '" "' + path + '"');
-    window.close();
+    document.close();
   } else {
     alert("'" + smoothCSV + "' が存在しません！");
   }
